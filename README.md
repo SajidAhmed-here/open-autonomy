@@ -20,7 +20,7 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://github.com/valory-xyz/open-autonomy/actions/workflows/main_workflow.yml">
+  <a href="https://github.com/valory-xyz/open-autonomy/actions/workflows/main.yaml">
     <img alt="Sanity checks and tests" src="https://github.com/valory-xyz/open-autonomy/workflows/main_workflow/badge.svg?branch=main">
   </a>
   <a href="">

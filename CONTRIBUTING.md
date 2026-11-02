@@ -53,7 +53,7 @@ docker build $TM -t valory/open-autonomy-tendermint:0.1.0 \
                  -t valory/open-autonomy-tendermint:latest
 ```
 
-`.github/workflows/main_workflow.yml` additionally pulls `valory/contracts-amm`, `valory/safe-contract-net`, and `trufflesuite/ganache:beta`, but those fixture classes have no callers in this repo and can be omitted locally. When the workflow is updated, update this section alongside it so the two stay in sync.
+`.github/workflows/main.yaml` installs the native tools, builds the CI Skaffold profile, and prepares these same integration / e2e images. The unused AMM, Safe network, and Ganache fixture images are not pulled.
 
 
 ### Documentation (Docstrings and inline comments)

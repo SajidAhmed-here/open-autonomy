@@ -53,7 +53,7 @@ docker build $TM -t valory/open-autonomy-tendermint:0.1.0 \
                  -t valory/open-autonomy-tendermint:latest
 ```
 
-`.github/workflows/main_workflow.yml` also pulls `valory/safe-contract-net` and `trufflesuite/ganache:beta`, but those fixture classes (`GnosisSafeNetDockerImage`, `GanacheDockerImage`) have no callers in this repo and can be omitted locally. `valory/contracts-amm` was previously in this pull list too; it was dropped after Docker Hub started returning 404 for the image and a confirm-no-callers check showed nothing in this repo invokes `AMMNetDockerImage`.
+`.github/workflows/main.yaml` prepares these same integration / e2e images and builds the CI Skaffold profile. The unused `GnosisSafeNetDockerImage`, `GanacheDockerImage`, and `AMMNetDockerImage` fixture images are not pulled.
 
 ### Formatting & Linting
 ```bash
