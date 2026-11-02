@@ -52,7 +52,7 @@ def run_service_locally(image: str) -> None:
     )
     try:
         for line in client.api.logs(container.id, follow=True, stream=True):
-            click.echo(line.decode())
+            click.echo(line.decode(), nl=False)
     except KeyboardInterrupt:  # pragma: no cover
         pass
     finally:  # pragma: no cover

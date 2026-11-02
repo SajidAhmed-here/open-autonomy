@@ -268,11 +268,7 @@ jobs:
       - if: matrix.os == 'ubuntu-24.04'
         name: Packages unit tests ubuntu-24.04
         run: |
-          # The 3.10 coverage-specific group drops {posargs}; use the regular
-          # group so the e2e marker exclusion reaches pytest on every version.
-          tox -e packages-py${{ matrix.python-version }}-linux \
-            -x 'testenv:packages-py3.10-linux.commands={[commands-packages]commands}' \
-            -- -m 'not e2e'
+          tox -e packages-py${{ matrix.python-version }}-linux -- -m 'not e2e'
 
       - if: matrix.os == 'macos-15-intel'
         name: Set macOS SDK root

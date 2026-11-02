@@ -24,6 +24,7 @@ import multiprocessing.process
 import os
 import time
 from typing import Optional, Tuple, cast
+from unittest import mock
 
 import docker
 import pytest
@@ -36,6 +37,31 @@ from autonomy.constants import (
 
 from tests.conftest import skip_docker_tests
 from tests.test_autonomy.test_cli.base import BaseCliTest
+
+
+class TestServiceRegistryLogStream(BaseCliTest):
+    """Test registry log streaming without a Docker daemon."""
+
+    cli_options: Tuple[str, ...] = ("develop", "service-registry-network")
+
+    @pytest.mark.parametrize(
+        "chunks",
+        (
+            (b"Deploying contracts with the acc", b"ount: example\n"),
+            (b"Deploying contracts with the account: example\n",),
+        ),
+    )
+    def test_log_chunks_preserve_newlines(self, chunks: Tuple[bytes, ...]) -> None:
+        """Preserve log text when Docker splits a message across chunks."""
+        with mock.patch("autonomy.cli.develop.get_docker_client") as get_client:
+            client = get_client.return_value
+            client.api.logs.return_value = iter(chunks)
+            result = self.run_cli()
+
+        assert result.exit_code == 0, result.output
+        assert b"".join(chunks).decode() in result.output
+        assert "\n\n" not in result.output
+        client.containers.run.return_value.stop.assert_called_once()
 
 
 @pytest.mark.integration
