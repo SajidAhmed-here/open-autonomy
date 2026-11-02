@@ -20,8 +20,8 @@
   </a>
 </p>
 <p align="center">
-  <a href="https://github.com/valory-xyz/open-autonomy/actions/workflows/main.yaml">
-    <img alt="Sanity checks and tests" src="https://github.com/valory-xyz/open-autonomy/workflows/main_workflow/badge.svg?branch=main">
+  <a href="https://github.com/SajidAhmed-here/open-autonomy/actions/workflows/main.yaml">
+    <img alt="Sanity checks and tests" src="https://github.com/SajidAhmed-here/open-autonomy/actions/workflows/main.yaml/badge.svg?branch=main">
   </a>
   <a href="">
     <img alt="Codecov" src="https://img.shields.io/codecov/c/github/valory-xyz/open-autonomy">

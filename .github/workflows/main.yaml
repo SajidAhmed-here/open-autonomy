@@ -200,7 +200,6 @@ jobs:
     needs:
       - lock_check
       - install_check
-      - copyright_doc_and_dependencies_check
       - linter_checks
     runs-on: ${{ matrix.os }}
 
@@ -374,7 +373,6 @@ jobs:
     needs:
       - lock_check
       - install_check
-      - copyright_doc_and_dependencies_check
       - linter_checks
     runs-on: ${{ matrix.os }}
 
